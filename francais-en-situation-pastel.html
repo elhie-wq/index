@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Français en Situation – Avec Elhie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #FDFBFE;
+    --rose: #F5D6EC;
+    --lavande: #EDE3F8;
+    --menthe: #D6EEF0;
+    --violet: #6B4FA0;
+    --mauve: #C47AB0;
+    --dark: #2A1F35;
+    --muted: #7A6A8A;
+    --light: #9A8AAA;
+    --border: #EDE8F5;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--dark); line-height: 1.7; }
+
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 48px;
+    background: rgba(253,251,254,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--violet); font-weight: 600; }
+  .logo span { font-style: italic; color: var(--mauve); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { font-size: 14px; color: var(--muted); text-decoration: none; transition: color .2s; }
+  .nav-links a:hover { color: var(--violet); }
+  .nav-cta { background: var(--violet); color: white; border: none; padding: 10px 22px; border-radius: 24px; font-size: 14px; font-family: 'DM Sans', sans-serif; cursor: pointer; text-decoration: none; display: inline-block; transition: background .2s; }
+  .nav-cta:hover { background: var(--mauve); }
+
+  .hero { display: grid; grid-template-columns: 1.1fr 0.9fr; min-height: 520px; overflow: hidden; }
+  .hero-text { padding: 80px 56px 64px; display: flex; flex-direction: column; justify-content: center; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: #F0EBF8; color: var(--violet); font-size: 12px; font-weight: 500; padding: 6px 16px; border-radius: 20px; margin-bottom: 26px; width: fit-content; border: 1px solid #DDD3EE; }
+  .hero-title { font-family: 'Cormorant Garamond', serif; font-size: 54px; line-height: 1.1; color: var(--dark); margin-bottom: 18px; }
+  .hero-title em { color: var(--mauve); font-style: italic; }
+  .hero-sub { font-size: 15px; color: var(--muted); line-height: 1.85; max-width: 420px; margin-bottom: 34px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-main { background: var(--violet); color: white; border: none; padding: 13px 30px; border-radius: 30px; font-size: 14px; font-family: 'DM Sans', sans-serif; font-weight: 500; cursor: pointer; transition: background .2s; text-decoration: none; display: inline-block; }
+  .btn-main:hover { background: var(--mauve); }
+  .btn-ghost { background: transparent; color: var(--violet); border: 1.5px solid #DDD3EE; padding: 12px 26px; border-radius: 30px; font-size: 14px; font-family: 'DM Sans', sans-serif; cursor: pointer; text-decoration: none; display: inline-block; transition: border-color .2s; }
+  .btn-ghost:hover { border-color: var(--mauve); }
+
+  .hero-visual { background: linear-gradient(135deg, #EDE3F8 0%, #F5D6EC 55%, #D6EEF0 100%); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .orb { position: absolute; border-radius: 50%; }
+  .o1 { width: 200px; height: 200px; background: rgba(196,122,176,0.15); top: -50px; right: -40px; }
+  .o2 { width: 100px; height: 100px; background: rgba(107,79,160,0.1); bottom: 30px; left: 20px; }
+  .o3 { width: 60px; height: 60px; background: rgba(214,238,240,0.4); top: 40%; left: 12%; }
+  .profile-card { background: white; border-radius: 24px; padding: 26px; width: 220px; box-shadow: 0 20px 60px rgba(107,79,160,0.18); position: relative; z-index: 1; }
+  .pc-av { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--mauve), var(--violet)); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 24px; color: white; font-weight: 600; margin-bottom: 12px; }
+  .pc-name { font-weight: 500; font-size: 16px; color: var(--dark); }
+  .pc-role { font-size: 12px; color: var(--light); margin-bottom: 16px; }
+  .pc-stats { display: flex; border-top: 1px solid #F0EBF8; padding-top: 14px; }
+  .pcs { flex: 1; text-align: center; }
+  .pcs + .pcs { border-left: 1px solid #F0EBF8; }
+  .pcs-n { font-family: 'Cormorant Garamond', serif; font-size: 21px; color: var(--mauve); font-weight: 600; display: block; }
+  .pcs-l { font-size: 10px; color: var(--light); }
+
+  .sec-head { text-align: center; padding: 72px 40px 44px; }
+  .sec-tag { display: inline-block; background: #F0EBF8; color: var(--violet); font-size: 12px; padding: 5px 16px; border-radius: 20px; margin-bottom: 14px; border: 1px solid #DDD3EE; }
+  .sec-title { font-family: 'Cormorant Garamond', serif; font-size: 36px; color: var(--dark); }
+  .sec-title em { font-style: italic; color: var(--mauve); }
+
+  .courses { padding: 0 48px 72px; }
+  .cgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .ccard { background: white; border-radius: 20px; overflow: hidden; border: 1px solid var(--border); transition: transform .2s, box-shadow .2s; }
+  .ccard:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(107,79,160,0.1); }
+  .cicon { height: 108px; display: flex; align-items: center; justify-content: center; font-size: 40px; }
+  .ci1 { background: linear-gradient(135deg, #FADADD, #F5B8D0); }
+  .ci2 { background: linear-gradient(135deg, #E8D8F5, #D4C0EE); }
+  .ci3 { background: linear-gradient(135deg, #D4EEF0, #B8E0E4); }
+  .cbody { padding: 20px; }
+  .ctag { font-size: 11px; color: var(--mauve); background: #FCF0F8; padding: 3px 10px; border-radius: 12px; display: inline-block; margin-bottom: 9px; font-weight: 500; }
+  .cname { font-family: 'Cormorant Garamond', serif; font-size: 19px; color: var(--dark); margin-bottom: 7px; }
+  .cdesc { font-size: 13px; color: var(--light); line-height: 1.65; margin-bottom: 12px; }
+  .cinc { list-style: none; margin-bottom: 15px; }
+  .cinc li { font-size: 12px; color: var(--muted); padding: 3px 0; }
+  .cinc li::before { content: "✦ "; color: var(--mauve); font-size: 10px; }
+  .cfoot { display: flex; justify-content: space-between; align-items: center; }
+  .cprice { font-family: 'Cormorant Garamond', serif; font-size: 17px; color: var(--violet); font-weight: 600; }
+  .cprice small { font-size: 12px; font-family: 'DM Sans', sans-serif; color: var(--light); font-weight: 400; }
+  .cbtn { font-size: 12px; color: var(--violet); border: 1px solid var(--border); padding: 5px 13px; border-radius: 14px; text-decoration: none; transition: background .2s; }
+  .cbtn:hover { background: #F0EBF8; }
+
+  .about { background: linear-gradient(135deg, #F5EEF8 0%, #FBF0F6 50%, #EEF5F8 100%); padding: 72px 48px; display: grid; grid-template-columns: 270px 1fr; gap: 60px; align-items: center; }
+  .about-left { text-align: center; }
+  .a-av { width: 155px; height: 155px; border-radius: 50%; background: linear-gradient(135deg, var(--mauve), var(--violet)); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 56px; color: white; margin: 0 auto 16px; font-weight: 600; }
+  .a-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--dark); }
+  .a-role { font-size: 13px; color: var(--light); margin-top: 4px; }
+  .a-title { font-family: 'Cormorant Garamond', serif; font-size: 34px; color: var(--dark); margin-bottom: 16px; line-height: 1.2; }
+  .a-title em { font-style: italic; color: var(--mauve); }
+  .a-text { font-size: 15px; color: var(--muted); line-height: 1.9; margin-bottom: 26px; }
+  .a-tags { display: flex; gap: 10px; flex-wrap: wrap; }
+  .atag { background: white; color: var(--violet); font-size: 13px; padding: 7px 18px; border-radius: 22px; border: 1px solid #DDD3EE; }
+
+  .pricing { padding: 0 48px 72px; }
+  .pgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: start; }
+  .pcard { background: white; border-radius: 22px; padding: 30px 26px; border: 1px solid var(--border); text-align: center; transition: transform .2s; }
+  .pcard:hover { transform: translateY(-3px); }
+  .pcard.feat { background: linear-gradient(160deg, #6B4FA0, #9B6FC0); border-color: transparent; transform: translateY(-8px); box-shadow: 0 24px 60px rgba(107,79,160,0.28); }
+  .pbadge { display: inline-block; font-size: 11px; padding: 4px 14px; border-radius: 14px; margin-bottom: 14px; background: #F0EBF8; color: var(--violet); font-weight: 500; }
+  .pcard.feat .pbadge { background: rgba(255,255,255,0.2); color: #EDD5F8; }
+  .pname { font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--light); margin-bottom: 8px; }
+  .pcard.feat .pname { color: #CCA8E8; }
+  .pamount { font-family: 'Cormorant Garamond', serif; font-size: 48px; color: var(--dark); line-height: 1; }
+  .pcard.feat .pamount { color: white; }
+  .pamount sup { font-size: 20px; vertical-align: top; margin-top: 10px; display: inline-block; }
+  .pperiod { font-size: 13px; color: var(--light); margin-bottom: 22px; }
+  .pcard.feat .pperiod { color: #CCA8E8; }
+  .plist { list-style: none; text-align: left; margin-bottom: 26px; }
+  .plist li { font-size: 14px; color: var(--muted); padding: 8px 0; border-bottom: 1px solid #F5F0FA; }
+  .pcard.feat .plist li { color: #DEC8F0; border-color: rgba(255,255,255,0.1); }
+  .plist li::before { content: "✓ "; color: var(--mauve); }
+  .pcard.feat .plist li::before { color: #EDD5F8; }
+  .pcta { width: 100%; padding: 12px; border-radius: 26px; border: none; font-size: 14px; font-family: 'DM Sans', sans-serif; font-weight: 500; cursor: pointer; transition: background .2s; background: #F0EBF8; color: var(--violet); }
+  .pcta:hover { background: #E5DDF5; }
+  .pcard.feat .pcta { background: white; color: var(--violet); }
+
+  .blog { padding: 0 48px 72px; }
+  .bgrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .bcard { background: white; border-radius: 18px; overflow: hidden; border: 1px solid var(--border); display: flex; transition: transform .2s; }
+  .bcard:hover { transform: translateY(-3px); }
+  .bimg { width: 90px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 28px; }
+  .bi1 { background: linear-gradient(135deg, #FADADD, #F5C0D5); }
+  .bi2 { background: linear-gradient(135deg, #E8D8F5, #D8C8EE); }
+  .bi3 { background: linear-gradient(135deg, #D4EEF0, #C0E4E8); }
+  .bi4 { background: linear-gradient(135deg, #F5EAD8, #EED8C0); }
+  .bbody { padding: 16px 20px; }
+  .bdate { font-size: 11px; color: var(--mauve); margin-bottom: 5px; font-weight: 500; }
+  .btitle { font-family: 'Cormorant Garamond', serif; font-size: 15px; color: var(--dark); margin-bottom: 5px; line-height: 1.4; }
+  .bexcerpt { font-size: 12px; color: var(--light); line-height: 1.6; }
+
+  .contact { background: #2A1F35; padding: 72px 48px; display: grid; grid-template-columns: 1fr 1.1fr; gap: 60px; align-items: start; }
+  .ct-title { font-family: 'Cormorant Garamond', serif; font-size: 34px; color: #F5EEF8; margin-bottom: 14px; line-height: 1.2; }
+  .ct-title em { font-style: italic; color: var(--mauve); }
+  .ct-desc { font-size: 15px; color: #7A6A8A; line-height: 1.85; margin-bottom: 30px; }
+  .ct-info { display: flex; flex-direction: column; gap: 14px; }
+  .ci-item { display: flex; gap: 14px; align-items: center; }
+  .ci-icon { width: 40px; height: 40px; background: #3D3050; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .ci-text { font-size: 14px; color: #C0A8D8; }
+  .cform { display: flex; flex-direction: column; gap: 13px; }
+  .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+  .finp { background: #3D3050; border: 1px solid #5A4870; border-radius: 12px; padding: 13px 16px; color: #F5EEF8; font-size: 14px; font-family: 'DM Sans', sans-serif; outline: none; width: 100%; transition: border-color .2s; }
+  .finp:focus { border-color: var(--mauve); }
+  .finp::placeholder { color: #6A5A80; }
+  textarea.finp { resize: none; height: 110px; }
+  .fsubmit { background: linear-gradient(135deg, var(--mauve), var(--violet)); color: white; border: none; padding: 14px; border-radius: 28px; font-size: 15px; font-family: 'DM Sans', sans-serif; font-weight: 500; cursor: pointer; transition: opacity .2s; }
+  .fsubmit:hover { opacity: 0.9; }
+
+  footer { background: #1E1628; padding: 22px 48px; display: flex; justify-content: space-between; align-items: center; }
+  .flogo { font-family: 'Cormorant Garamond', serif; font-size: 17px; color: #C0A8D8; font-weight: 600; }
+  .ftext { font-size: 13px; color: #5A4870; }
+  .flinks { display: flex; gap: 20px; }
+  .flinks a { font-size: 13px; color: #5A4870; text-decoration: none; transition: color .2s; }
+  .flinks a:hover { color: #C0A8D8; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-badge { animation: fadeUp 0.5s ease 0.1s both; }
+  .hero-title { animation: fadeUp 0.5s ease 0.2s both; }
+  .hero-sub { animation: fadeUp 0.5s ease 0.3s both; }
+  .hero-btns { animation: fadeUp 0.5s ease 0.4s both; }
+
+  @media (max-width: 900px) {
+    nav { padding: 14px 20px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-visual { min-height: 280px; }
+    .hero-text { padding: 48px 24px 40px; }
+    .hero-title { font-size: 38px; }
+    .cgrid, .pgrid, .bgrid { grid-template-columns: 1fr; }
+    .about { grid-template-columns: 1fr; padding: 48px 24px; }
+    .contact { grid-template-columns: 1fr; padding: 48px 24px; }
+    .courses, .pricing, .blog { padding-left: 24px; padding-right: 24px; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+    .pcard.feat { transform: none; }
+    .frow { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Français <span>en Situation</span></div>
+  <ul class="nav-links">
+    <li><a href="#cours">Cours</a></li>
+    <li><a href="#elhie">À propos</a></li>
+    <li><a href="#tarifs">Tarifs</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#tarifs" class="nav-cta">Voir les packs</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-text">
+    <span class="hero-badge">🇫🇷 Cours 100% en ligne</span>
+    <h1 class="hero-title">Le français<br>comme on <em>le vit</em></h1>
+    <p class="hero-sub">Apprenez à vous exprimer avec naturel et confiance grâce à des mises en situation réelles. Fiches, vidéos, audios et quiz — tout ce qu'il faut pour progresser vraiment.</p>
+    <div class="hero-btns">
+      <a href="#cours" class="btn-main">Découvrir les cours</a>
+      <a href="#contact" class="btn-ghost">Me contacter</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="orb o1"></div>
+    <div class="orb o2"></div>
+    <div class="orb o3"></div>
+    <div class="profile-card">
+      <div class="pc-av">E</div>
+      <div class="pc-name">Elhie</div>
+      <div class="pc-role">Passionnée de français</div>
+      <div class="pc-stats">
+        <div class="pcs"><span class="pcs-n">100%</span><span class="pcs-l">en ligne</span></div>
+        <div class="pcs"><span class="pcs-n">3</span><span class="pcs-l">formules</span></div>
+        <div class="pcs"><span class="pcs-n">♥</span><span class="pcs-l">passion</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sec-head" id="cours">
+  <span class="sec-tag">📚 Ce que je propose</span>
+  <h2 class="sec-title">Des ressources pour <em>vraiment</em> progresser</h2>
+</div>
+<section class="courses">
+  <div class="cgrid">
+    <div class="ccard">
+      <div class="cicon ci1">🎭</div>
+      <div class="cbody">
+        <span class="ctag">Mise en situation</span>
+        <div class="cname">Situations du quotidien</div>
+        <p class="cdesc">Dialogues réels et jeux de rôle pour s'exprimer sans hésiter.</p>
+        <ul class="cinc"><li>Scénarios audio & vidéo</li><li>Fiches de vocabulaire</li><li>Quiz de compréhension</li></ul>
+        <div class="cfoot"><span class="cprice">Inclus <small>dans les packs</small></span><a href="#tarifs" class="cbtn">Voir les packs</a></div>
+      </div>
+    </div>
+    <div class="ccard">
+      <div class="cicon ci2">📄</div>
+      <div class="cbody">
+        <span class="ctag">Fiches & mémos</span>
+        <div class="cname">Fiches de révision</div>
+        <p class="cdesc">Des fiches claires pour retenir les règles et le vocabulaire essentiels.</p>
+        <ul class="cinc"><li>Fiches thématiques</li><li>Fiches mémotech</li><li>Résumés illustrés</li></ul>
+        <div class="cfoot"><span class="cprice">À partir de <small>3 €</small></span><a href="#tarifs" class="cbtn">Voir les packs</a></div>
+      </div>
+    </div>
+    <div class="ccard">
+      <div class="cicon ci3">🎧</div>
+      <div class="cbody">
+        <span class="ctag">Audio & vidéo</span>
+        <div class="cname">Cours audio & vidéo</div>
+        <p class="cdesc">Écoutez, répétez, mémorisez à votre rythme, où que vous soyez.</p>
+        <ul class="cinc"><li>Vidéos de cours</li><li>Audios de prononciation</li><li>Exercices guidés</li></ul>
+        <div class="cfoot"><span class="cprice">À partir de <small>8 €</small></span><a href="#tarifs" class="cbtn">Voir les packs</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="elhie">
+  <div class="about-left">
+    <div class="a-av">E</div>
+    <div class="a-name">Elhie</div>
+    <div class="a-role">Formatrice en français</div>
+  </div>
+  <div>
+    <h2 class="a-title">Bonjour, je suis <em>Elhie</em> !</h2>
+    <p class="a-text">Le français est ma passion depuis toujours. Ce qui m'anime, c'est de transmettre la langue telle qu'elle se vit au quotidien — pas uniquement dans les livres, mais dans les conversations réelles, les situations concrètes, les expressions naturelles.<br><br>Je crois que tout le monde peut progresser avec les bonnes ressources et la bonne approche. Mes cours en ligne sont pensés pour être accessibles, vivants et vraiment utiles.</p>
+    <div class="a-tags">
+      <span class="atag">💡 Pédagogie active</span>
+      <span class="atag">🎯 Mise en situation</span>
+      <span class="atag">💻 100% en ligne</span>
+      <span class="atag">❤️ Passionnée</span>
+    </div>
+  </div>
+</section>
+
+<div class="sec-head" id="tarifs">
+  <span class="sec-tag">💰 Tarifs</span>
+  <h2 class="sec-title">Choisissez votre <em>formule</em></h2>
+</div>
+<section class="pricing">
+  <div class="pgrid">
+    <div class="pcard">
+      <span class="pbadge">Pour commencer</span>
+      <div class="pname">Essentiel</div>
+      <div class="pamount"><sup>€</sup>29</div>
+      <div class="pperiod">accès à vie</div>
+      <ul class="plist">
+        <li>2 vidéos de cours</li>
+        <li>Fiches de révision thématiques</li>
+        <li>Quiz de révision</li>
+        <li>Accès immédiat en ligne</li>
+      </ul>
+      <!-- Remplacez par votre lien Stripe -->
+      <button class="pcta" onclick="alert('À connecter à votre lien Stripe')">Obtenir ce pack</button>
+    </div>
+    <div class="pcard feat">
+      <span class="pbadge">⭐ Le plus complet</span>
+      <div class="pname">Intermédiaire</div>
+      <div class="pamount"><sup>€</sup>49</div>
+      <div class="pperiod">accès à vie</div>
+      <ul class="plist">
+        <li>Tout le pack Essentiel</li>
+        <li>Audios de prononciation</li>
+        <li>Fiches mémo techniques</li>
+        <li>Quiz avancés</li>
+        <li>Mises en situation audio</li>
+      </ul>
+      <!-- Remplacez par votre lien Stripe -->
+      <button class="pcta" onclick="alert('À connecter à votre lien Stripe')">Choisir cette formule</button>
+    </div>
+    <div class="pcard">
+      <span class="pbadge">Expérience totale</span>
+      <div class="pname">Immersion</div>
+      <div class="pamount"><sup>€</sup>79</div>
+      <div class="pperiod">accès à vie</div>
+      <ul class="plist">
+        <li>Tout le pack Intermédiaire</li>
+        <li>Mises en situation interactives</li>
+        <li>Scénarios vidéo complets</li>
+        <li>Contenu mis à jour régulièrement</li>
+      </ul>
+      <!-- Remplacez par votre lien Stripe -->
+      <button class="pcta" onclick="alert('À connecter à votre lien Stripe')">Tout inclure</button>
+    </div>
+  </div>
+</section>
+
+<div class="sec-head" id="blog">
+  <span class="sec-tag">✍️ Blog</span>
+  <h2 class="sec-title">Conseils & <em>astuces</em></h2>
+</div>
+<section class="blog">
+  <div class="bgrid">
+    <div class="bcard"><div class="bimg bi1">💬</div><div class="bbody"><div class="bdate">12 avril 2026</div><div class="btitle">5 expressions françaises qu'on n'apprend pas à l'école</div><p class="bexcerpt">La langue vivante est bien différente de celle des manuels.</p></div></div>
+    <div class="bcard"><div class="bimg bi2">📖</div><div class="bbody"><div class="bdate">5 avril 2026</div><div class="btitle">Comment mémoriser le vocabulaire sans s'ennuyer</div><p class="bexcerpt">Des techniques ludiques pour retenir les mots durablement.</p></div></div>
+    <div class="bcard"><div class="bimg bi3">🎧</div><div class="bbody"><div class="bdate">28 mars 2026</div><div class="btitle">Pourquoi écouter du français améliore votre accent</div><p class="bexcerpt">L'oreille avant la grammaire : l'audio comme premier outil.</p></div></div>
+    <div class="bcard"><div class="bimg bi4">🗣️</div><div class="bbody"><div class="bdate">20 mars 2026</div><div class="btitle">La mise en situation : la méthode qui change tout</div><p class="bexcerpt">Pourquoi apprendre dans un contexte réel est bien plus efficace.</p></div></div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div>
+    <h2 class="ct-title">Une question ?<br><em>Écrivez-moi !</em></h2>
+    <p class="ct-desc">Vous hésitez entre les formules ou vous souhaitez simplement en savoir plus ? Je vous réponds avec plaisir sous 24h.</p>
+    <div class="ct-info">
+      <div class="ci-item"><div class="ci-icon">💻</div><div class="ci-text">Cours 100% en ligne — partout dans le monde</div></div>
+      <div class="ci-item"><div class="ci-icon">⏰</div><div class="ci-text">Réponse sous 24h</div></div>
+      <div class="ci-item"><div class="ci-icon">💳</div><div class="ci-text">Paiement sécurisé via Stripe (CB, Apple Pay)</div></div>
+    </div>
+  </div>
+  <form class="cform" onsubmit="event.preventDefault(); alert('Message envoyé !')">
+    <div class="frow">
+      <input class="finp" type="text" placeholder="Votre prénom" required>
+      <input class="finp" type="email" placeholder="Votre email" required>
+    </div>
+    <input class="finp" type="text" placeholder="Sujet">
+    <textarea class="finp" placeholder="Votre message..."></textarea>
+    <button type="submit" class="fsubmit">Envoyer le message →</button>
+  </form>
+</section>
+
+<footer>
+  <div class="flogo">Français en Situation</div>
+  <div class="ftext">© 2026 Elhie · Tous droits réservés</div>
+  <div class="flinks">
+    <a href="#cours">Cours</a>
+    <a href="#tarifs">Tarifs</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>

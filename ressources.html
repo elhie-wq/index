@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ressources & Boutique — Français en Situation</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--violet:#9b7fc8;--violet-dark:#6a4f9e;--violet-light:#f0eaff;--rose:#e8a0b4;--rose-dark:#c26a88;--rose-light:#fbeef3;--teal:#5da8c8;--teal-dark:#2a6e8a;--teal-light:#e3f3fa;--amber:#d4933a;--green:#5a9e6f;--bg:#fdf8fb;--white:#ffffff;--text:#2d1f3a;--text-muted:#8a7a96;--border:#e8ddf0;--gold:#c9a227}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text)}
+nav{position:sticky;top:0;z-index:100;background:rgba(253,248,251,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px}
+.nav-logo{font-family:'Playfair Display',serif;font-size:18px;color:var(--violet-dark);font-weight:700}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{font-size:13px;color:var(--text-muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--violet-dark)}
+.nav-cta{background:var(--violet);color:white;padding:8px 18px;border-radius:20px;font-size:13px;text-decoration:none;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+.hero{text-align:center;padding:5rem 2rem 4rem;background:linear-gradient(160deg,#fdf8fb 0%,#f0eaff 50%,#fbeef3 100%);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-80px;left:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(155,127,200,.12) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+.hero-badge{display:inline-block;background:var(--violet);color:white;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:5px 16px;border-radius:20px;margin-bottom:1.5rem;animation:fadeUp .6s ease both}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.5rem);font-weight:700;color:var(--violet-dark);line-height:1.15;margin-bottom:1rem;animation:fadeUp .6s .1s ease both}
+.hero p{font-size:16px;color:var(--text-muted);max-width:520px;margin:0 auto 2rem;line-height:1.7;animation:fadeUp .6s .2s ease both}
+.hero-stats{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;animation:fadeUp .6s .3s ease both}
+.hero-stat{text-align:center}
+.hero-stat .num{font-size:2rem;font-weight:700;color:var(--violet-dark);font-family:'Playfair Display',serif}
+.hero-stat .lbl{font-size:12px;color:var(--text-muted)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.tabs-wrap{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:60px;z-index:99}
+.tabs{display:flex;max-width:960px;margin:0 auto;padding:0 2rem;gap:0;overflow-x:auto}
+.tab-btn{padding:1rem 1.5rem;font-size:13px;font-weight:500;color:var(--text-muted);border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap;font-family:'DM Sans',sans-serif}
+.tab-btn:hover{color:var(--violet-dark)}
+.tab-btn.active{color:var(--violet-dark);border-bottom-color:var(--violet)}
+.content{max-width:960px;margin:0 auto;padding:3rem 2rem 5rem}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+.section-title{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--text);margin-bottom:.5rem}
+.section-sub{color:var(--text-muted);font-size:14px;margin-bottom:2.5rem}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem;margin-bottom:3rem}
+.card{background:var(--white);border-radius:18px;border:1px solid var(--border);overflow:hidden;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(106,79,158,.1)}
+.card-top{padding:1.5rem 1.5rem 1rem;display:flex;align-items:flex-start;gap:12px}
+.card-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;font-family:'Playfair Display',serif;font-weight:700;color:white}
+.card-title{font-size:15px;font-weight:500;color:var(--text);margin-bottom:3px}
+.card-level{font-size:11px;color:var(--text-muted)}
+.card-body{padding:0 1.5rem 1rem;flex:1}
+.card-desc{font-size:13px;color:var(--text-muted);line-height:1.6;margin-bottom:.8rem}
+.card-tags{display:flex;flex-wrap:wrap;gap:5px}
+.tag{font-size:11px;padding:3px 10px;border-radius:12px;font-weight:500}
+.tag-v{background:var(--violet-light);color:var(--violet-dark)}
+.tag-r{background:var(--rose-light);color:var(--rose-dark)}
+.tag-t{background:var(--teal-light);color:var(--teal-dark)}
+.tag-g{background:#edf9f0;color:#2d7a3e}
+.tag-a{background:#fef3e2;color:#8a5a00}
+.card-footer{padding:1rem 1.5rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.card-price{font-size:18px;font-weight:700;color:var(--violet-dark);font-family:'Playfair Display',serif}
+.free{color:var(--green)}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:10px;font-size:13px;font-weight:500;text-decoration:none;border:none;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif}
+.btn-p{background:var(--violet);color:white}
+.btn-p:hover{background:var(--violet-dark)}
+.btn-o{background:transparent;color:var(--violet);border:1.5px solid var(--violet)}
+.btn-o:hover{background:var(--violet-light)}
+.btn-gold{background:var(--gold);color:white}
+.btn-gold:hover{opacity:.9}
+.pack-card{background:var(--white);border-radius:20px;border:1px solid var(--border);padding:2rem;margin-bottom:1.5rem;display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:start;transition:transform .2s,box-shadow .2s}
+.pack-card:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(106,79,158,.08)}
+.pack-card.featured{border:2px solid var(--violet)}
+.pack-badge{display:inline-block;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;padding:3px 10px;border-radius:20px;margin-bottom:.8rem}
+.pack-title{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--text);margin-bottom:.4rem}
+.pack-desc{font-size:13px;color:var(--text-muted);line-height:1.7;margin-bottom:1rem}
+.pack-includes{font-size:12px;color:var(--text-muted);margin-bottom:.3rem;font-weight:500;text-transform:uppercase;letter-spacing:.06em}
+.pack-list{list-style:none}
+.pack-list li{font-size:13px;color:var(--text);padding:3px 0;display:flex;align-items:center;gap:8px}
+.pack-list li::before{content:'✓';color:var(--green);font-weight:700;font-size:13px;flex-shrink:0}
+.pack-pricing{text-align:right;min-width:160px}
+.pack-old{font-size:13px;color:var(--text-muted);text-decoration:line-through;margin-bottom:4px}
+.pack-price{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--violet-dark);line-height:1;margin-bottom:4px}
+.pack-per{font-size:11px;color:var(--text-muted);margin-bottom:1rem}
+.pack-save{display:inline-block;background:#edf9f0;color:#2d7a3e;font-size:11px;font-weight:600;padding:3px 8px;border-radius:8px;margin-bottom:1rem}
+.tarifs-table{width:100%;border-collapse:collapse;margin-bottom:2rem;font-size:13px}
+.tarifs-table th{padding:11px 14px;text-align:left;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);background:var(--violet-light);border-bottom:1px solid var(--border)}
+.tarifs-table td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--text)}
+.tarifs-table tr:last-child td{border-bottom:none}
+.tarifs-table tr:nth-child(even) td{background:#faf7fc}
+.prix{font-weight:700;color:var(--violet-dark);font-family:'Playfair Display',serif;font-size:15px}
+.gratuit{color:var(--green);font-weight:700}
+.note-box{background:var(--violet-light);border:1px solid #ddd0f0;border-radius:14px;padding:1.2rem 1.5rem;font-size:13px;color:var(--text-muted);line-height:1.7;display:flex;gap:12px;margin-bottom:2rem}
+.note-box strong{color:var(--violet-dark)}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-bottom:3rem}
+.testi{background:var(--white);border-radius:16px;border:1px solid var(--border);padding:1.2rem 1.4rem}
+.testi-stars{color:var(--gold);font-size:14px;margin-bottom:.6rem}
+.testi-text{font-size:13px;color:var(--text);line-height:1.6;margin-bottom:.8rem;font-style:italic}
+.testi-name{font-size:12px;color:var(--text-muted);font-weight:500}
+.faq-item{border:1px solid var(--border);border-radius:12px;margin-bottom:.8rem;overflow:hidden}
+.faq-q{padding:1rem 1.2rem;font-size:14px;font-weight:500;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:var(--white)}
+.faq-q:hover{background:var(--violet-light)}
+.faq-a{padding:0 1.2rem 1rem;font-size:13px;color:var(--text-muted);line-height:1.7;display:none}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-q{color:var(--violet-dark)}
+.arrow{transition:transform .2s}
+.faq-item.open .arrow{transform:rotate(180deg)}
+footer{background:var(--text);color:#a09ab0;text-align:center;padding:2rem;font-size:13px}
+footer a{color:var(--rose);text-decoration:none}
+@media(max-width:640px){.pack-card{grid-template-columns:1fr}.pack-pricing{text-align:left}.nav-links{display:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Français en Situation</div>
+  <div class="nav-links">
+    <a href="#">Accueil</a><a href="#">Cours</a>
+    <a href="#" style="color:var(--violet-dark);font-weight:500">Ressources</a>
+    <a href="#">Contact</a>
+  </div>
+  <a href="#" class="nav-cta">Voir la boutique</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">📚 Ressources pédagogiques</div>
+  <h1>Fiches, Livrets &amp;<br>Cahiers d'Exercices</h1>
+  <p>Toutes les ressources pour apprendre et progresser en français — fiches de grammaire, livrets de conjugaison et cahiers d'exercices avec corrigés.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">5</div><div class="lbl">Fiches gratuites</div></div>
+    <div class="hero-stat"><div class="num">2</div><div class="lbl">Livrets PDF</div></div>
+    <div class="hero-stat"><div class="num">2</div><div class="lbl">Cahiers d'exercices</div></div>
+    <div class="hero-stat"><div class="num">A1→B1</div><div class="lbl">Niveaux couverts</div></div>
+  </div>
+</section>
+
+<div class="tabs-wrap">
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab('fiches',this)">📄 Fiches Grammaire</button>
+    <button class="tab-btn" onclick="showTab('livrets',this)">📖 Livrets</button>
+    <button class="tab-btn" onclick="showTab('cahiers',this)">✏️ Cahiers d'Exercices</button>
+    <button class="tab-btn" onclick="showTab('boutique',this)">🛒 Boutique &amp; Tarifs</button>
+  </div>
+</div>
+
+<div class="content">
+
+<!-- FICHES -->
+<div class="tab-panel active" id="tab-fiches">
+  <h2 class="section-title">Fiches de Grammaire</h2>
+  <p class="section-sub">5 fiches complètes avec tableaux, règles et exemples — téléchargement gratuit</p>
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-top"><div class="card-icon" style="background:var(--violet)">A</div><div><div class="card-title">Les Articles</div><div class="card-level">Niveau A1</div></div></div>
+      <div class="card-body"><p class="card-desc">Définis, indéfinis et partitifs — tous les tableaux avec exemples et règle de la forme négative.</p><div class="card-tags"><span class="tag tag-v">le/la/les</span><span class="tag tag-r">un/une/des</span><span class="tag tag-t">du/de la</span></div></div>
+      <div class="card-footer"><div class="card-price"><span class="free">Gratuit</span></div><a href="fiche1-articles.pdf" class="btn btn-o" download>⬇ Télécharger</a></div>
+    </div>
+    <div class="card">
+      <div class="card-top"><div class="card-icon" style="background:var(--rose-dark)">N</div><div><div class="card-title">Les Noms</div><div class="card-level">Niveau A1–A2</div></div></div>
+      <div class="card-body"><p class="card-desc">Formation du féminin et du pluriel — 8 règles avec cas irréguliers.</p><div class="card-tags"><span class="tag tag-v">Féminin</span><span class="tag tag-r">Pluriel</span><span class="tag tag-a">Irréguliers</span></div></div>
+      <div class="card-footer"><div class="card-price"><span class="free">Gratuit</span></div><a href="fiche2-noms.pdf" class="btn btn-o" download>⬇ Télécharger</a></div>
+    </div>
+    <div class="card">
+      <div class="card-top"><div class="card-icon" style="background:var(--teal-dark);font-size:11px">Adj</div><div><div class="card-title">Les Adjectifs</div><div class="card-level">Niveau A2–B1</div></div></div>
+      <div class="card-body"><p class="card-desc">Accord au féminin et pluriel, comparatif, superlatif relatif et absolu.</p><div class="card-tags"><span class="tag tag-v">Accord</span><span class="tag tag-t">Comparatif</span><span class="tag tag-a">Superlatif</span></div></div>
+      <div class="card-footer"><div class="card-price"><span class="free">Gratuit</span></div><a href="fiche3-adjectifs.pdf" class="btn btn-o" download>⬇ Télécharger</a></div>
+    </div>
+    <div class="card">
+      <div class="card-top"><div class="card-icon" style="background:#8a5a00;font-size:11px">123</div><div><div class="card-title">Les Nombres</div><div class="card-level">Niveau A1–B1</div></div></div>
+      <div class="card-body"><p class="card-desc">Cardinaux et ordinaux de 0 à un milliard — chiffres, lettres et règles d'orthographe.</p><div class="card-tags"><span class="tag tag-v">Cardinaux</span><span class="tag tag-r">Ordinaux</span><span class="tag tag-g">Milliard</span></div></div>
+      <div class="card-footer"><div class="card-price"><span class="free">Gratuit</span></div><a href="fiche4-nombres.pdf" class="btn btn-o" download>⬇ Télécharger</a></div>
+    </div>
+    <div class="card">
+      <div class="card-top"><div class="card-icon" style="background:#5d8a6b;font-size:11px">Pro</div><div><div class="card-title">Les Pronoms</div><div class="card-level">Niveau A1–B1</div></div></div>
+      <div class="card-body"><p class="card-desc">Personnels, possessifs, démonstratifs, relatifs, interrogatifs et indéfinis.</p><div class="card-tags"><span class="tag tag-v">Personnels</span><span class="tag tag-r">Possessifs</span><span class="tag tag-t">Relatifs</span></div></div>
+      <div class="card-footer"><div class="card-price"><span class="free">Gratuit</span></div><a href="fiche5-pronoms.pdf" class="btn btn-o" download>⬇ Télécharger</a></div>
+    </div>
+    <div class="card" style="border:2px solid var(--violet)">
+      <div class="card-top"><div class="card-icon" style="background:linear-gradient(135deg,var(--violet),var(--rose-dark))">★</div><div><div class="card-title">Mémo Grammaire Complet</div><div class="card-level">A1→B1 — Toutes les fiches</div></div></div>
+      <div class="card-body"><p class="card-desc">Les 5 fiches réunies en un seul document — idéal comme référence permanente.</p><div class="card-tags"><span class="tag tag-v">5 fiches</span><span class="tag tag-r">PDF A4</span><span class="tag tag-g">Complet</span></div></div>
+      <div class="card-footer"><div class="card-price"><span class="free">Gratuit</span></div><a href="memo-grammaire-complet.pdf" class="btn btn-p" download>⬇ Télécharger</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- LIVRETS -->
+<div class="tab-panel" id="tab-livrets">
+  <h2 class="section-title">Livrets PDF</h2>
+  <p class="section-sub">Livrets complets à imprimer ou consulter en ligne</p>
+  <div class="pack-card">
+    <div>
+      <div class="pack-badge" style="background:var(--violet-light);color:var(--violet-dark)">📖 Livret A5</div>
+      <div class="pack-title">Mémo Grammaire — Livret</div>
+      <p class="pack-desc">Version livret A5 — parfait pour imprimer, plier et agrafer. Toutes les règles dans un format pocket.</p>
+      <p class="pack-includes">Contenu</p>
+      <ul class="pack-list">
+        <li>Articles définis, indéfinis, partitifs</li>
+        <li>Noms — féminin et pluriel</li>
+        <li>Adjectifs qualificatifs et degrés</li>
+        <li>Nombres cardinaux et ordinaux</li>
+        <li>Tous les types de pronoms</li>
+        <li>Format A5 — impression recto-verso</li>
+      </ul>
+    </div>
+    <div class="pack-pricing">
+      <div class="pack-price"><span style="color:var(--green)">Gratuit</span></div>
+      <div class="pack-per">PDF imprimable</div>
+      <a href="memo-grammaire-livret.pdf" class="btn btn-o" download style="width:100%;justify-content:center">⬇ Télécharger</a>
+    </div>
+  </div>
+  <div class="pack-card featured">
+    <div>
+      <div class="pack-badge" style="background:var(--teal-light);color:var(--teal-dark)">📚 Livret A5 — Premium</div>
+      <div class="pack-title">Livret de Conjugaison Complet</div>
+      <p class="pack-desc">Le livret de conjugaison le plus complet — tous les temps, toutes les formes, avec explications et règles détaillées.</p>
+      <p class="pack-includes">11 sections + appendice</p>
+      <ul class="pack-list">
+        <li>Présent — 3 groupes + affirm./nég./interrogatif</li>
+        <li>20 verbes irréguliers essentiels</li>
+        <li>Verbes pronominaux et impersonnels</li>
+        <li>Auxiliaires être &amp; avoir — tableaux complets</li>
+        <li>Accord du participe passé — règles détaillées</li>
+        <li>Passé composé, Imparfait, Futur, Conditionnel</li>
+        <li>Impératif avec pronoms</li>
+        <li>Appendice : Subjonctif présent complet</li>
+      </ul>
+    </div>
+    <div class="pack-pricing">
+      <div class="pack-save">Promo ce mois-ci</div>
+      <div class="pack-price">3,99 €</div>
+      <div class="pack-per">téléchargement immédiat</div>
+      <button class="btn btn-p" style="width:100%;justify-content:center" onclick="alert('Paiement PayPal à configurer')">🛒 Acheter — 3,99 €</button>
+      <div style="margin-top:8px;font-size:11px;color:var(--text-muted);text-align:center">Paiement sécurisé via PayPal</div>
+    </div>
+  </div>
+</div>
+
+<!-- CAHIERS -->
+<div class="tab-panel" id="tab-cahiers">
+  <h2 class="section-title">Cahiers d'Exercices</h2>
+  <p class="section-sub">Exercices variés avec lignes pour écrire et corrigés détaillés avec explications</p>
+  <div class="pack-card">
+    <div>
+      <div class="pack-badge" style="background:var(--violet-light);color:var(--violet-dark)">✏️ Cahier A5 — 90 pts</div>
+      <div class="pack-title">Cahier d'Exercices — Grammaire</div>
+      <p class="pack-desc">8 exercices progressifs sur tous les thèmes de grammaire — avec lignes pour écrire, exercices à choix multiples, transformations de phrases et bilan final.</p>
+      <p class="pack-includes">8 exercices complets</p>
+      <ul class="pack-list">
+        <li>Exercice 1 — Les Articles (10 pts)</li>
+        <li>Exercice 2 — Noms féminin &amp; pluriel (10 pts)</li>
+        <li>Exercice 3 — Adjectifs — accord (10 pts)</li>
+        <li>Exercice 4 — Degrés de l'adjectif (10 pts)</li>
+        <li>Exercice 5 — Les Nombres (10 pts)</li>
+        <li>Exercice 6 — Pronoms personnels &amp; possessifs (10 pts)</li>
+        <li>Exercice 7 — Pronoms relatifs &amp; démonstratifs (10 pts)</li>
+        <li>Exercice 8 — Bilan mélangé (20 pts)</li>
+        <li>✦ Corrigé complet avec explications</li>
+      </ul>
+    </div>
+    <div class="pack-pricing">
+      <div class="pack-price">4,99 €</div>
+      <div class="pack-per">téléchargement immédiat</div>
+      <button class="btn btn-p" style="width:100%;justify-content:center;margin-bottom:8px" onclick="alert('Paiement PayPal à configurer')">🛒 Acheter — 4,99 €</button>
+      <div style="font-size:11px;color:var(--text-muted);text-align:center">Paiement sécurisé via PayPal</div>
+    </div>
+  </div>
+  <div class="pack-card featured">
+    <div>
+      <div class="pack-badge" style="background:var(--teal-light);color:var(--teal-dark)">✏️ Cahier A5 — 100 pts</div>
+      <div class="pack-title">Cahier d'Exercices — Conjugaison</div>
+      <p class="pack-desc">10 exercices couvrant tous les temps et formes — le cahier le plus complet pour maîtriser la conjugaison française.</p>
+      <p class="pack-includes">10 exercices complets</p>
+      <ul class="pack-list">
+        <li>Exercice 1 — Présent réguliers (10 pts)</li>
+        <li>Exercice 2 — Forme négative (10 pts)</li>
+        <li>Exercice 3 — Forme interrogative (10 pts)</li>
+        <li>Exercice 4 — Verbes irréguliers (10 pts)</li>
+        <li>Exercice 5 — Passé composé + accord (10 pts)</li>
+        <li>Exercice 6 — Imparfait vs passé composé (10 pts)</li>
+        <li>Exercice 7 — Futur simple (10 pts)</li>
+        <li>Exercice 8 — Conditionnel &amp; Impératif (10 pts)</li>
+        <li>Exercice 9 — Accord du participe passé (10 pts)</li>
+        <li>Exercice 10 — Subjonctif présent (10 pts)</li>
+        <li>✦ Corrigé complet avec règles et explications</li>
+      </ul>
+    </div>
+    <div class="pack-pricing">
+      <div class="pack-save">⭐ Le plus complet</div>
+      <div class="pack-price">4,99 €</div>
+      <div class="pack-per">téléchargement immédiat</div>
+      <button class="btn btn-p" style="width:100%;justify-content:center;margin-bottom:8px" onclick="alert('Paiement PayPal à configurer')">🛒 Acheter — 4,99 €</button>
+      <div style="font-size:11px;color:var(--text-muted);text-align:center">Paiement sécurisé via PayPal</div>
+    </div>
+  </div>
+</div>
+
+<!-- BOUTIQUE -->
+<div class="tab-panel" id="tab-boutique">
+  <h2 class="section-title">Boutique &amp; Tarifs</h2>
+  <p class="section-sub">Tous les produits disponibles — fiches gratuites et ressources premium</p>
+
+  <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--text);margin-bottom:1rem">📋 Tableau complet des prix</h3>
+  <table class="tarifs-table">
+    <thead><tr><th>Ressource</th><th>Format</th><th>Niveau</th><th>Contenu</th><th>Prix</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Fiche 1 — Articles</strong></td><td>PDF A4</td><td>A1</td><td>Définis, indéfinis, partitifs</td><td class="gratuit">Gratuit</td></tr>
+      <tr><td><strong>Fiche 2 — Noms</strong></td><td>PDF A4</td><td>A1–A2</td><td>Féminin &amp; pluriel</td><td class="gratuit">Gratuit</td></tr>
+      <tr><td><strong>Fiche 3 — Adjectifs</strong></td><td>PDF A4</td><td>A2–B1</td><td>Accord + comparatif + superlatif</td><td class="gratuit">Gratuit</td></tr>
+      <tr><td><strong>Fiche 4 — Nombres</strong></td><td>PDF A4</td><td>A1–B1</td><td>Cardinaux, ordinaux, grands nombres</td><td class="gratuit">Gratuit</td></tr>
+      <tr><td><strong>Fiche 5 — Pronoms</strong></td><td>PDF A4</td><td>A1–B1</td><td>6 types de pronoms</td><td class="gratuit">Gratuit</td></tr>
+      <tr><td><strong>Mémo Grammaire Complet</strong></td><td>PDF A4</td><td>A1–B1</td><td>5 fiches réunies</td><td class="gratuit">Gratuit</td></tr>
+      <tr><td><strong>Mémo Grammaire Livret</strong></td><td>PDF A5</td><td>A1–B1</td><td>Version livret pocket imprimable</td><td class="gratuit">Gratuit</td></tr>
+      <tr style="background:var(--teal-light)!important"><td><strong>📚 Livret de Conjugaison</strong></td><td>PDF A5</td><td>A1–B1</td><td>11 sections + subjonctif complet</td><td class="prix">3,99 €</td></tr>
+      <tr style="background:var(--violet-light)!important"><td><strong>✏️ Cahier Exercices Grammaire</strong></td><td>PDF A5</td><td>A1–B1</td><td>8 exercices + corrigé (90 pts)</td><td class="prix">4,99 €</td></tr>
+      <tr style="background:var(--violet-light)!important"><td><strong>✏️ Cahier Exercices Conjugaison</strong></td><td>PDF A5</td><td>A1–B1</td><td>10 exercices + corrigé (100 pts)</td><td class="prix">4,99 €</td></tr>
+      <tr style="background:var(--rose-light)!important"><td><strong>📦 Pack Complet Grammaire</strong></td><td>3 fichiers PDF</td><td>A1–B1</td><td>Mémo complet + Livret + Cahier</td><td class="prix">6,99 €</td></tr>
+      <tr style="background:var(--rose-light)!important"><td><strong>📦 Pack Conjugaison</strong></td><td>2 fichiers PDF</td><td>A1–B1</td><td>Livret + Cahier conjugaison</td><td class="prix">6,99 €</td></tr>
+      <tr style="background:linear-gradient(135deg,#f0eaff,#fde8ef)!important"><td><strong>⭐ Pack Intégral Tout-en-Un</strong></td><td>5 fichiers PDF</td><td>A1–B1</td><td>Tout : fiches + livrets + 2 cahiers</td><td class="prix">11,99 €</td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--text);margin:2rem 0 1rem">🎁 Packs promotionnels</h3>
+
+  <div class="pack-card">
+    <div>
+      <div class="pack-badge" style="background:#edf9f0;color:#2d7a3e">📦 Pack Grammaire</div>
+      <div class="pack-title">Pack Complet Grammaire</div>
+      <p class="pack-desc">Tout ce qu'il faut pour maîtriser la grammaire française.</p>
+      <ul class="pack-list">
+        <li>Mémo Grammaire Complet (PDF A4)</li>
+        <li>Mémo Grammaire Livret (PDF A5)</li>
+        <li>Cahier d'Exercices Grammaire (PDF A5)</li>
+      </ul>
+    </div>
+    <div class="pack-pricing">
+      <div class="pack-old">9,98 € séparément</div>
+      <div class="pack-price">6,99 €</div>
+      <div class="pack-per">les 3 fichiers</div>
+      <div class="pack-save">Économisez 3 €</div>
+      <button class="btn btn-gold" style="width:100%;justify-content:center" onclick="alert('PayPal à configurer')">🛒 Acheter le pack</button>
+    </div>
+  </div>
+
+  <div class="pack-card">
+    <div>
+      <div class="pack-badge" style="background:var(--teal-light);color:var(--teal-dark)">📦 Pack Conjugaison</div>
+      <div class="pack-title">Pack Conjugaison</div>
+      <p class="pack-desc">Livret de référence + cahier d'entraînement — le duo parfait.</p>
+      <ul class="pack-list">
+        <li>Livret de Conjugaison complet (PDF A5)</li>
+        <li>Cahier d'Exercices Conjugaison (PDF A5)</li>
+      </ul>
+    </div>
+    <div class="pack-pricing">
+      <div class="pack-old">8,98 € séparément</div>
+      <div class="pack-price">6,99 €</div>
+      <div class="pack-per">les 2 fichiers</div>
+      <div class="pack-save">Économisez 2 €</div>
+      <button class="btn btn-gold" style="width:100%;justify-content:center" onclick="alert('PayPal à configurer')">🛒 Acheter le pack</button>
+    </div>
+  </div>
+
+  <div class="pack-card featured">
+    <div>
+      <div class="pack-badge" style="background:linear-gradient(135deg,var(--violet),var(--rose-dark));color:white">⭐ Pack Intégral</div>
+      <div class="pack-title">Pack Tout-en-Un — Édition Complète</div>
+      <p class="pack-desc">L'intégralité des ressources pédagogiques — la bibliothèque complète pour professeurs et apprenants.</p>
+      <ul class="pack-list">
+        <li>Mémo Grammaire Complet (PDF A4)</li>
+        <li>Mémo Grammaire Livret (PDF A5)</li>
+        <li>Livret de Conjugaison (PDF A5)</li>
+        <li>Cahier d'Exercices Grammaire (PDF A5)</li>
+        <li>Cahier d'Exercices Conjugaison (PDF A5)</li>
+        <li>Accès aux futures mises à jour</li>
+      </ul>
+    </div>
+    <div class="pack-pricing">
+      <div class="pack-old">17,96 € séparément</div>
+      <div class="pack-price">11,99 €</div>
+      <div class="pack-per">5 fichiers PDF</div>
+      <div class="pack-save">Économisez 6 €</div>
+      <button class="btn btn-p" style="width:100%;justify-content:center;background:linear-gradient(135deg,var(--violet),var(--rose-dark))" onclick="alert('PayPal à configurer')">⭐ Acheter le pack intégral</button>
+      <div style="margin-top:8px;font-size:11px;color:var(--text-muted);text-align:center">Paiement sécurisé · Livraison immédiate</div>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--text);margin:2.5rem 0 1rem">💬 Ce qu'en pensent les élèves</h3>
+  <div class="testi-grid">
+    <div class="testi"><div class="testi-stars">★★★★★</div><p class="testi-text">"Les fiches sont claires et bien organisées. J'ai progressé en deux semaines !"</p><div class="testi-name">— Sofia M., Espagne</div></div>
+    <div class="testi"><div class="testi-stars">★★★★★</div><p class="testi-text">"Le cahier de conjugaison est excellent. Les corrigés expliquent vraiment pourquoi."</p><div class="testi-name">— Yuki T., Japon</div></div>
+    <div class="testi"><div class="testi-stars">★★★★★</div><p class="testi-text">"J'utilise le livret de conjugaison avec mes élèves — parfait pour la classe !"</p><div class="testi-name">— Anna K., professeure</div></div>
+    <div class="testi"><div class="testi-stars">★★★★☆</div><p class="testi-text">"Les fiches gratuites sont déjà très complètes. Le pack intégral vaut vraiment le prix."</p><div class="testi-name">— Carlos R., Mexique</div></div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--text);margin:2rem 0 1rem">❓ Questions fréquentes</h3>
+  <div class="faq-item open">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Comment télécharger mes fichiers après achat ? <span class="arrow">▾</span></div>
+    <div class="faq-a">Après le paiement via PayPal, vous recevez un email avec le lien de téléchargement immédiat. Les fichiers sont au format PDF, compatibles avec tous les appareils.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Puis-je imprimer les cahiers pour mes élèves ? <span class="arrow">▾</span></div>
+    <div class="faq-a">Oui ! Les cahiers sont conçus au format A5, parfait pour une impression recto-verso et une reliure simple. Chaque achat vous donne le droit d'imprimer pour votre usage personnel ou votre classe.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Les fiches gratuites sont-elles vraiment gratuites ? <span class="arrow">▾</span></div>
+    <div class="faq-a">Oui, totalement ! Les 5 fiches de grammaire et le Mémo complet sont 100% gratuits, sans inscription requise.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Pour quel niveau sont ces ressources ? <span class="arrow">▾</span></div>
+    <div class="faq-a">Les ressources couvrent les niveaux A1 à B1 du Cadre Européen Commun de Référence (CECR). Elles conviennent aux débutants et intermédiaires.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Y a-t-il des nouvelles ressources à venir ? <span class="arrow">▾</span></div>
+    <div class="faq-a">Oui ! De nouvelles fiches et cahiers sont régulièrement ajoutés. Les acheteurs du Pack Intégral bénéficient des mises à jour gratuitement.</div>
+  </div>
+
+  <div class="note-box" style="margin-top:2rem">
+    <span style="font-size:20px">💜</span>
+    <div><strong>Professeurs :</strong> Une remise spéciale est disponible pour les établissements scolaires et les commandes groupées (10+ cahiers). Contactez-nous pour en savoir plus.</div>
+  </div>
+</div>
+
+</div><!-- /content -->
+
+<footer>
+  <p>© 2025 Français en Situation — Tous droits réservés</p>
+  <p style="margin-top:6px"><a href="#">Contact</a> · <a href="#">Mentions légales</a> · <a href="#">CGV</a></p>
+</footer>
+
+<script>
+function showTab(name,btn){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
